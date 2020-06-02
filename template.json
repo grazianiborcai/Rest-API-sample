@@ -45,7 +45,7 @@
                                     "test1": "reply1",
                                     "test2": "reply2"
                                 },
-                                "statusCode": 202
+                                "statusCode": 200
                             }
                         }
                     },
