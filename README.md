@@ -1,6 +1,6 @@
-# Webhook template deploy
+# Rest API template deploy
 
-With the following steps you will deploy a simple Logic Apps workflow to expose a webhook endpoint, which will response status 202 immediately and call the calback uri after 2 minutes.
+With the following steps you will deploy a simple Logic Apps workflow to expose a Rest API endpoint, which will response status 200 for every call.
 
 <b>1) First of all download the repository in your local machine and decompress into a local folder:</b> <BR>
 ![Download files.png](/.attachments/Download-files.png)
