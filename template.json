@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "logic_app_name": {
+        "Logic_app_name": {
             "type": "String"
         }
     },
@@ -11,7 +11,7 @@
         {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "[parameters('logic_app_name')]",
+            "name": "[parameters('Logic_app_name')]",
             "location": "westus",
             "properties": {
                 "state": "Enabled",
@@ -26,9 +26,6 @@
                             "inputs": {
                                 "schema": {
                                     "properties": {
-                                        "callBackUri": {
-                                            "type": "string"
-                                        },
                                         "test": {
                                             "type": "string"
                                         }
@@ -39,41 +36,15 @@
                         }
                     },
                     "actions": {
-                        "Delay": {
-                            "runAfter": {
-                                "Response": [
-                                    "Succeeded"
-                                ]
-                            },
-                            "type": "Wait",
-                            "inputs": {
-                                "interval": {
-                                    "count": 2,
-                                    "unit": "Minute"
-                                }
-                            }
-                        },
-                        "HTTP": {
-                            "runAfter": {
-                                "Delay": [
-                                    "Succeeded"
-                                ]
-                            },
-                            "type": "Http",
-                            "inputs": {
-                                "body": {
-                                    "test1": "reply1",
-                                    "test2": "reply2"
-                                },
-                                "method": "POST",
-                                "uri": "@triggerBody()?['callBackUri']"
-                            }
-                        },
                         "Response": {
                             "runAfter": {},
                             "type": "Response",
                             "kind": "Http",
                             "inputs": {
+                                "body": {
+                                    "test1": "reply1",
+                                    "test2": "reply2"
+                                },
                                 "statusCode": 202
                             }
                         }
